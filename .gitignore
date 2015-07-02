@@ -14,3 +14,5 @@ RTLabelProject/RTLabelProject.xcodeproj/xcuserdata/*
 RTLabelProject/RTLabelProject.xcodeproj/project.xcworkspace/xcuserdata/*
 
 
+*.podspec
+
