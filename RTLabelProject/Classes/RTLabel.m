@@ -207,7 +207,7 @@
 	
 	// Initialize an attributed string.
 	CFStringRef string = (__bridge CFStringRef)self.plainText;
-	CFMutableAttributedStringRef attrString = CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
+	CFMutableAttributedStringRef attrString = CFAttributedStringCreateMutable(kCFAllocatorDefault, (long)0);
 	CFAttributedStringReplaceString (attrString, CFRangeMake(0, 0), string);
 	
 	CFMutableDictionaryRef styleDict1 = ( CFDictionaryCreateMutable( (0), 0, (0), (0) ) );
@@ -217,7 +217,7 @@
 	CFDictionaryAddValue( styleDict1, kCTForegroundColorAttributeName, [self.textColor CGColor] );
 	CFAttributedStringSetAttributes( attrString, CFRangeMake( 0, CFAttributedStringGetLength(attrString) ), styleDict1, 0 ); 
 	
-	CFMutableDictionaryRef styleDict = ( CFDictionaryCreateMutable( (0), 0, (0), (0) ) );
+	CFMutableDictionaryRef styleDict = ( CFDictionaryCreateMutable( (0), (NSUInteger)0, (0), (0) ) );
 	
 	[self applyParagraphStyleToText:attrString attributes:nil atPosition:0 withLength:(int)CFAttributedStringGetLength(attrString)];
 	
@@ -874,7 +874,7 @@
 		
 		NSString *delimiter = [NSString stringWithFormat:@"%@>", text];
 		int position = (int)[data rangeOfString:delimiter options:NSCaseInsensitiveSearch range:NSMakeRange(last_position, [data length] - last_position)].location;
-		if ((NSInteger)position != NSNotFound && position != -1)
+		if (position != (int)NSNotFound && position != -1)
 		{
            if ([delimiter rangeOfString:@"<p"].location==0)
            {
@@ -893,7 +893,7 @@
 		{
 			// end of tag
 			tag = [text substringFromIndex:2];
-			if ((NSInteger)position!=NSNotFound)
+			if (position != (int)NSNotFound)
 			{
 				for (int i=(int)([components count]-1); i>=0; i--)
 				{
@@ -997,9 +997,9 @@
 			NSString *delimiter = [NSString stringWithFormat:@"%@>", text];
 			int position = (int)[data rangeOfString:delimiter].location;
 			BOOL isEnd = [delimiter rangeOfString:@"</"].location!=NSNotFound;
-			if ((NSInteger)position!=NSNotFound)
+			if (position != (int)NSNotFound)
 			{
-				NSString *text2 = [data substringWithRange:NSMakeRange(last_position, position-last_position)];
+				NSString *text2 = [data substringWithRange:NSMakeRange((NSUInteger)last_position, (NSUInteger)(position-last_position))];
 				if (isEnd)
 				{
 					// is inside a tag

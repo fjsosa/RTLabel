@@ -57,7 +57,7 @@
 		[titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:20]];
 		[titleLabel setText:@"RTLabel"];
 		[self.navigationItem setTitleView:titleLabel];
-		[titleLabel setTextAlignment:UITextAlignmentCenter];
+		[titleLabel setTextAlignment:NSTextAlignmentCenter];
 		
 		_dataArray = [NSMutableArray array];
 		NSMutableDictionary *row1 = [NSMutableDictionary dictionary];
