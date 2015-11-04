@@ -8,5 +8,5 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/yestoall/RTLabel-pod.git" }
   s.platform     = :ios
   s.requires_arc = true
-  s.source_files = "/RTLabelProject/Classes/*.{h,m}"
+  s.source_files = "RTLabelProject/Classes/*.{h,m}"
 end
