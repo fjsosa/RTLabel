@@ -766,6 +766,7 @@
 - (void)setHighlightedText:(NSString *)text
 {
 	_highlightedText = [text stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
+     _highlightedText = [_text stringByReplacingOccurrencesOfString:@"<br/>" withString:@"\n"];
 	RTLabelExtractedComponent *component = [RTLabel extractTextStyleFromText:_highlightedText paragraphReplacement:self.paragraphReplacement];
     [self setHighlightedTextComponents:component.textComponents];
 }
@@ -773,6 +774,7 @@
 - (void)setText:(NSString *)text
 {
 	_text = [text stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
+    _text = [_text stringByReplacingOccurrencesOfString:@"<br/>" withString:@"\n"];
 	RTLabelExtractedComponent *component = [RTLabel extractTextStyleFromText:_text paragraphReplacement:self.paragraphReplacement];
     [self setTextComponents:component.textComponents];
     [self setPlainText:component.plainText];
@@ -782,6 +784,7 @@
 - (void)setText:(NSString *)text extractedTextComponent:(RTLabelExtractedComponent*)extractedComponent
 {
 	_text = [text stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
+    _text = [_text stringByReplacingOccurrencesOfString:@"<br/>" withString:@"\n"];
     [self setTextComponents:extractedComponent.textComponents];
     [self setPlainText:extractedComponent.plainText];
 	[self setNeedsDisplay];
@@ -790,6 +793,7 @@
 - (void)setHighlightedText:(NSString *)text extractedTextComponent:(RTLabelExtractedComponent*)extractedComponent
 {
     _highlightedText = [text stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
+    _highlightedText = [_text stringByReplacingOccurrencesOfString:@"<br/>" withString:@"\n"];
     [self setHighlightedTextComponents:extractedComponent.textComponents];
 }
 
