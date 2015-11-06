@@ -420,19 +420,19 @@
 		{
 			if ([value caseInsensitiveCompare:@"left"] == NSOrderedSame)
 			{
-				textAlignment = kCTLeftTextAlignment;
+				textAlignment = kCTTextAlignmentLeft;
 			}
 			else if ([value caseInsensitiveCompare:@"right"] == NSOrderedSame)
 			{
-				textAlignment = kCTRightTextAlignment;
+				textAlignment = kCTTextAlignmentRight;
 			}
 			else if ([value caseInsensitiveCompare:@"justify"] == NSOrderedSame)
 			{
-				textAlignment = kCTJustifiedTextAlignment;
+				textAlignment = kCTTextAlignmentJustified;
 			}
 			else if ([value caseInsensitiveCompare:@"center"] == NSOrderedSame)
 			{
-				textAlignment = kCTCenterTextAlignment;
+				textAlignment = kCTTextAlignmentCenter;
 			}
 		}
 		else if ([key caseInsensitiveCompare:@"indent"] == NSOrderedSame)
@@ -513,7 +513,7 @@
 	int lineBreakMode = _lineBreakMode;
 	int lineSpacing = (int)_lineSpacing;
 
-    textAlignment = kCTCenterTextAlignment;
+    textAlignment = kCTTextAlignmentCenter;
 	
 	CTParagraphStyleSetting theSettings[] =
 	{
@@ -1072,6 +1072,7 @@
 - (void)setText:(NSString *)text extractedTextStyle:(NSDictionary*)extractTextStyle
 {
 	_text = [text stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
+    _text = [_text stringByReplacingOccurrencesOfString:@"<br/>" withString:@"\n"];
     [self setTextComponents:[extractTextStyle objectForKey:@"textComponents"]];
     [self setPlainText:[extractTextStyle objectForKey:@"plainText"]];
 	[self setNeedsDisplay];
